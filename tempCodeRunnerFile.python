@@ -1,0 +1,35 @@
+import tkinter as tk
+
+def toggle_action():
+    action_text.set("Sign Up" if toggle_var.get() else "Login")
+
+# Create main window
+root = tk.Tk()
+root.title("Sign Up / Login")
+
+# Toggle button
+toggle_var = tk.BooleanVar()
+toggle_var.set(True)  # Set default state to Sign Up
+toggle = tk.Checkbutton(root, text="Toggle:", variable=toggle_var, command=toggle_action)
+toggle.grid(row=0, column=0, sticky="w")
+
+# Username input
+tk.Label(root, text="Username:").grid(row=1, column=0, sticky="w")
+username_entry = tk.Entry(root)
+username_entry.grid(row=1, column=1)
+
+# Password input
+tk.Label(root, text="Password:").grid(row=2, column=0, sticky="w")
+password_entry = tk.Entry(root, show="*")
+password_entry.grid(row=2, column=1)
+
+# Action button
+action_text = tk.StringVar()
+action_btn = tk.Button(root, textvariable=action_text)
+action_btn.grid(row=3, columnspan=2)
+
+# Set initial state of action button
+toggle_action()
+
+# Run the GUI
+root.mainloop()
